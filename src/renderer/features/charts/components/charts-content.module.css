@@ -1,0 +1,14 @@
+.empty {
+    padding: var(--mantine-spacing-xl);
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+}

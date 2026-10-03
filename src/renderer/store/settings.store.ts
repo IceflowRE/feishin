@@ -525,6 +525,9 @@ export const GeneralSettingsSchema = z.object({
     autoSave: AutoSaveSchema,
     blurExplicitImages: z.boolean(),
     buttonSize: z.number(),
+    chartsPeriod: z.enum(['week', 'month', 'year']),
+    chartsScope: z.enum(['personal', 'community']),
+    chartsTopSongs: z.number().int().min(1).max(100),
     collections: z.array(CollectionSchema),
     combinedLyricsAndVisualizer: z.boolean(),
     confirmQueueChanges: z.boolean(),
@@ -1018,6 +1021,7 @@ export enum SidebarItem {
     ALBUMS = 'Albums',
     ARTISTS = 'Artists',
     ARTISTS_ALL = 'Artists-all',
+    CHARTS = 'Charts',
     COLLECTIONS = 'Collections',
     FAVORITES = 'Favorites',
     FOLDERS = 'Folders',
@@ -1182,6 +1186,12 @@ export const sidebarItems: SidebarItemType[] = [
         id: 'Favorites',
         label: i18n.t('page.sidebar.favorites'),
         route: AppRoute.FAVORITES,
+    },
+    {
+        disabled: false,
+        id: 'Charts',
+        label: i18n.t('page.sidebar.charts'),
+        route: AppRoute.CHARTS,
     },
     {
         disabled: false,
@@ -1350,6 +1360,9 @@ const initialState: SettingsState = {
         },
         blurExplicitImages: false,
         buttonSize: 15,
+        chartsPeriod: 'month',
+        chartsScope: 'personal',
+        chartsTopSongs: 25,
         collections: [],
         combinedLyricsAndVisualizer: false,
         confirmQueueChanges: true,
@@ -2931,6 +2944,17 @@ export const useSettingsStore = createWithEqualityFn<SettingsSlice>()(
                         disabled: false,
                         id: HomeItem.PLAYLISTS,
                     });
+
+                    if (
+                        !state.general.sidebarItems.some((item) => item.id === SidebarItem.CHARTS)
+                    ) {
+                        state.general.sidebarItems.push({
+                            disabled: false,
+                            id: SidebarItem.CHARTS,
+                            label: i18n.t('page.sidebar.charts'),
+                            route: AppRoute.CHARTS,
+                        });
+                    }
                 }
 
                 return persistedState;

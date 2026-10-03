@@ -996,6 +996,25 @@ export type AddToPlaylistQuery = {
 // Add to playlist
 export type AddToPlaylistResponse = null | undefined;
 
+export type ChartArgs = BaseEndpointArgs & { query: ChartQuery };
+
+export type ChartEntry = {
+    playCount: number;
+    previousRank: null | number;
+    rank: number;
+    song: Song;
+};
+
+export interface ChartQuery {
+    limit: number;
+    month?: number;
+    scope: 'community' | 'personal';
+    week?: number;
+    year: number;
+}
+
+export type ChartResponse = ChartEntry[];
+
 export type CreateInternetRadioStationArgs = BaseEndpointArgs & {
     body: CreateInternetRadioStationBody;
 };
@@ -1771,6 +1790,7 @@ export type InternalControllerEndpoint = {
     getArtistList: (args: ReplaceApiClientProps<ArtistListArgs>) => Promise<ArtistListResponse>;
     getArtistListCount: (args: ReplaceApiClientProps<ArtistListCountArgs>) => Promise<number>;
     getArtistRadio: (args: ReplaceApiClientProps<ArtistRadioArgs>) => Promise<Song[]>;
+    getChart: (args: ReplaceApiClientProps<ChartArgs>) => Promise<ChartResponse>;
     getDownloadUrl: (args: ReplaceApiClientProps<DownloadArgs>) => string;
     getFavoriteSongs: (
         args: ReplaceApiClientProps<FavoriteSongListArgs>,

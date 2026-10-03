@@ -1,0 +1,37 @@
+.rank {
+    font-variant-numeric: tabular-nums;
+}
+
+.change {
+    font-size: var(--mantine-font-size-sm);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.changeIconUp {
+    stroke: var(--theme-colors-state-success);
+}
+
+.changeIconDown {
+    stroke: var(--theme-colors-state-error);
+}
+
+.changeIconSame {
+    stroke: var(--theme-colors-foreground-muted);
+}
+
+.changeNew {
+    color: var(--theme-colors-state-info);
+}
+
+.changeUp {
+    color: var(--theme-colors-state-success);
+}
+
+.changeDown {
+    color: var(--theme-colors-state-error);
+}
+
+.changeSame {
+    color: var(--theme-colors-foreground-muted);
+}
