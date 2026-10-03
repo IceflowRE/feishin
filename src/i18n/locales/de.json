@@ -796,6 +796,23 @@
         "favorites": {
             "title": "$t(entity.favorite, {\"count\": 2})"
         },
+         "charts": {
+            "addToPlaylist": "Zu Wiedergabeliste hinzufügen",
+            "community": "Community",
+            "new": "Neu",
+            "nextPeriod": "Nächster Zeitraum",
+            "noSongs": "Keine Songs in diesem Zeitraum",
+            "period": "Zeitraum",
+            "personal": "Nur meine",
+            "plays": "WIEDERGABEN",
+            "previousPeriod": "Vorheriger Zeitraum",
+            "saveAsPlaylist": "Als Wiedergabeliste speichern",
+            "scope": "Wiedergaben",
+            "title": "Charts",
+            "topSongs": "Top Songs",
+            "unsupportedServer": "Charts werden nur mit Navidrome unterstützt",
+            "unsupportedFeature": "Dieser Server unterstützt keine Charts"
+        },
         "folderList": {
             "title": "$t(entity.folder, {\"count\": 2})"
         },

@@ -127,6 +127,15 @@ export const contract = c.router({
             500: resultWithHeaders(ndType._response.error),
         },
     },
+    getChart: {
+        method: 'GET',
+        path: 'chart',
+        query: ndType._parameters.charts,
+        responses: {
+            200: resultWithHeaders(ndType._response.charts),
+            500: resultWithHeaders(ndType._response.error),
+        },
+    },
     getGenreList: {
         method: 'GET',
         path: 'genre',

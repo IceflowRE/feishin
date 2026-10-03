@@ -45,6 +45,7 @@ const VERSION_INFO: VersionInfo = [
         '0.61.0',
         {
             [ServerFeature.ARTIST_IMAGE_UPLOAD]: [1],
+            [ServerFeature.CHARTS]: [2],
             [ServerFeature.INTERNET_RADIO_IMAGE_UPLOAD]: [1],
             [ServerFeature.PLAYLIST_IMAGE_UPLOAD]: [1],
         },
@@ -562,6 +563,22 @@ export const NavidromeController: InternalControllerEndpoint = {
         return res.body.similarSongs2.song.map((song) =>
             ssNormalize.song(song, apiClientProps.server),
         );
+    },
+    getChart: async (args) => {
+        const { apiClientProps, query } = args;
+
+        const res = await ndApiClient(apiClientProps).getChart({ query });
+
+        if (res.status !== 200) {
+            throw new Error('Failed to get chart');
+        }
+
+        return res.body.data.map((item) => ({
+            playCount: item.playCount,
+            previousRank: item.previousRank,
+            rank: item.rank,
+            song: ndNormalize.song(item.song, apiClientProps.server),
+        }));
     },
     getDownloadUrl: SubsonicController.getDownloadUrl,
     getFavoriteSongs: async (args) => {

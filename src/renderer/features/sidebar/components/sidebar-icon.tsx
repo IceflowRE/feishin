@@ -1,6 +1,8 @@
 import {
     RiAlbumFill,
     RiAlbumLine,
+    RiBarChart2Fill,
+    RiBarChart2Line,
     RiFlag2Fill,
     RiFlag2Line,
     RiFolder3Fill,
@@ -42,6 +44,9 @@ export const SidebarIcon = ({ active, route, size }: SidebarIconProps) => {
     const isActive = active !== undefined ? active : location.pathname === route;
     const renderIcon = () => {
         switch (route) {
+            case AppRoute.CHARTS:
+                if (isActive) return <RiBarChart2Fill size={size} />;
+                return <RiBarChart2Line size={size} />;
             case AppRoute.HOME:
                 if (isActive) return <RiHome6Fill size={size} />;
                 return <RiHome6Line size={size} />;

@@ -658,6 +658,23 @@ const song = z.object({
 
 const songList = z.array(song);
 
+const chartsParameters = z.object({
+    limit: z.number().int().min(1).max(100),
+    month: z.number().int().min(1).max(12).optional(),
+    scope: z.enum(['community', 'personal']),
+    week: z.number().int().min(1).max(53).optional(),
+    year: z.number().int(),
+});
+
+const charts = z.array(
+    z.object({
+        playCount: z.number(),
+        previousRank: z.number().nullable(),
+        rank: z.number(),
+        song: song,
+    }),
+);
+
 const songListParameters = paginationParameters.extend({
     _sort: z.nativeEnum(NDSongListSort).optional(),
     album_artist_id: z.array(z.string()).optional(),
@@ -884,6 +901,7 @@ export const ndType = {
         albumArtistList: albumArtistListParameters,
         albumList: albumListParameters,
         authenticate: authenticateParameters,
+        charts: chartsParameters,
         createPlaylist: createPlaylistParameters,
         genreList: genreListParameters,
         moveItem: moveItemParameters,
@@ -908,6 +926,7 @@ export const ndType = {
         albumArtistList,
         albumList,
         authenticate,
+        charts,
         createPlaylist,
         deleteArtistImage,
         deleteInternetRadioStation,

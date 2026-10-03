@@ -523,6 +523,23 @@
         "favorites": {
             "title": "$t(entity.favorite, {\"count\": 2})"
         },
+        "charts": {
+            "addToPlaylist": "Add to playlist",
+            "community": "Community",
+            "new": "New",
+            "nextPeriod": "Next period",
+            "noSongs": "No plays for this period",
+            "period": "Period",
+            "personal": "Personal",
+            "plays": "PLAYS",
+            "previousPeriod": "Previous period",
+            "saveAsPlaylist": "Save as playlist",
+            "scope": "Scope",
+            "title": "Charts",
+            "topSongs": "Top songs",
+            "unsupportedServer": "Charts are only supported on Navidrome servers",
+            "unsupportedFeature": "This server does not support charts"
+        },
         "windowBar": {
             "paused": "(Paused) ",
             "privateMode": "(Private mode)"
@@ -729,6 +746,7 @@
             "albumArtists": "Album Artists",
             "albums": "Albums",
             "collections": "Collections",
+            "charts": "Charts",
             "artists": "Artists",
             "favorites": "Favorites",
             "folders": "Folders",
